@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVP</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        font-family: "Lato", sans-serif;
+      }
+
+      img {
+        width: 100px;
+      }
+
+      .inicio h1 {
+        color: white;
+        padding: 20px;
+        margin-top: 5px;
+        text-align: center;
+        border-bottom: 2px solid rgb(73, 67, 67);
+      }
+
+      header {
+        background: white;
+        height: 120px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 1;
+      }
+
+      nav input {
+        position: relative;
+        top: 90px;
+        right: 20px;
+      }
+
+      nav ul li {
+        display: inline-block;
+        margin-top: 80px;
+        margin-right: 50px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 5px;
+      }
+
+      nav ul li a:hover {
+        background-color: rgb(65, 100, 163);
+        padding: 4px;
+        border-radius: 5px;
+      }
+
+      main {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        top: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div><img src="/img/logo.jpg" alt="mvp_logo" /></div>
+
+      <nav>
+        <input type="text" placeholder="Search" />
+      </nav>
+    </header>
+
+    <header>
+      <div><img src="/img/logo.jpg" alt="mvp_logo" /></div>
+
+      <nav>
+        <input type="text" placeholder="Search" />
+      </nav>
+    </header>
+
+    <main style="padding: 20px">
+      <div class="datos_contacto">
+        <div class="heading">
+          <h1>Datos de contacto</h1>
+        </div>
+        <div class="datos">
+          <form style="padding: 20px">
+            <div class="form-group owner">
+              <label for="owner">Nombre de contacto</label>
+              <input type="text" class="form-control" id="owner" />
+            </div>
+            <div class="form-group place">
+              <label for="cvv">Domicilio</label>
+              <input type="text" class="form-control" id="DOMICILIO" />
+            </div>
+            <div class="form-group" id="cellphone">
+              <label for="cardNumber">Codigo Postal</label>
+              <input type="text" class="form-control" id="cp_code" />
+            </div>
+            <div class="form-group" id="expiration-date">
+              <label for="cardNumber">Celular</label>
+              <input type="text" class="form-control" id="number" />
+            </div>
+
+            <div class="form-group" id="pay-now">
+              <button
+                type="submit"
+                class="btn btn-default"
+                id="confirm-purchase"
+              >
+                Confirmar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
