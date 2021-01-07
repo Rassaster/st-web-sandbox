@@ -107,3 +107,12 @@ input[type="submit"] {
   color: red;
   background-color: rgb(12, 89, 231);
 }
+#procceedToPayment a {
+  background-color: gold;
+  color: green;
+}
+
+#emptyShoppingCart {
+  background-color: red;
+  color: black;
+}
