@@ -25,9 +25,9 @@ let totalItems = shoppingCart.productsInCart.length;
 // **************************************
 let procceedPaymentBtn = document.getElementById('procceedToPayment');
 const shoppingCartToLocalStorage = () => {
-  localStorage.setItem('TotalCost', shoppingCart.totalCostCart);
-  localStorage.setItem('TotalProducts', shoppingCart.totalItemsCart);
-  localStorage.setItem('ListOfProducts', shoppingCart.productsInCart);
+  localStorage.setItem('totalCost', shoppingCart.totalCostCart);
+  localStorage.setItem('totalProducts', shoppingCart.totalItemsCart);
+  localStorage.setItem('listOfProducts', listOfProductsView.innerHTML);
 }
 procceedPaymentBtn.addEventListener('click', shoppingCartToLocalStorage);
 // **********************************************
@@ -50,7 +50,7 @@ emptyShoppingCartBtn.addEventListener('click', clearShoppingCart);
 // *** Add & Remove iPad ***
 // *************************
 let addiPad = () => {
-
+  // ++ Add item to shopping cart object ++
   shoppingCart.productsInCart.push(product1);
   // ++ Add item to shopping cart object ++
   let newListItem = document.createElement('li');
@@ -166,3 +166,11 @@ removeGamerPCButton.addEventListener('click', removeGamerPC);
 // -------------------------------
 // -- Add & Remove GamerPC ends --
 // -------------------------------
+window.onload = () => {
+  let previousListItemsView = localStorage.getItem('listOfProducts');
+  listOfProductsView.innerHTML = previousListItemsView;
+  let previousTotalItemsView = localStorage.getItem('totalProducts');
+  totalItemsView.textContent = previousTotalItemsView;
+  let previousTotalCostView = localStorage.getItem('totalCost');
+  totalCostView.textContent = previousTotalCostView;
+};
