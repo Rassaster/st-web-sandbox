@@ -1,0 +1,13 @@
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap");
+
+/* fontawesome v5*/
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/fontawesome.css");
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/regular.css");
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/brands.css");
+
+/* basic rules */
+@import "./partials/base/reset";
+@import "./partials/base/variables";
+@import "./partials/base/baserules";
+@import "./partials/components/eshop";
