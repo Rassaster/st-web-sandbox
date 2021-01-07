@@ -9,7 +9,7 @@
 
   <body>
     <header>
-      <div><img src="/img/logo.jpg" alt="mvp_logo" /></div>
+      <div><img src="https://source.unsplash.com/x60YFtdOsGU" alt="mvp_logo" /></div>
 
       <nav>
         <input type="text" placeholder="Search" />
@@ -20,65 +20,49 @@
       <div class="inicio"><h1>SHOP</h1></div>
       <section>
         <article class="categorias">
-          <h2>Categoria 1</h2>
+          <h2>Carro de Compras</h2> 
+          <ol id="listOfProducts"></ol>
           <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-          </ul>
-          <h2>Categoria 2</h2>
-          <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-            <li><a href="#">Item 4</a></li>
-            <li><a href="#">Item 5</a></li>
-            <li><a href="#">Item 6</a></li>
-          </ul>
-          <h2>Categoria 3</h2>
-          <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-            <li><a href="#">Item 4</a></li>
-            <li><a href="#">Item 5</a></li>
-            <li><a href="#">Item 6</a></li>
+            <li id="totalItems">Número de items: </li>
+            <li id="totalCost">Costo Total: </li>
           </ul>
         </article>
 
         <article>
           <div>
             <h2>IPAD</h2>
-            <img src="/img/ipad2.png" alt="" />
+            <img src="https://source.unsplash.com/McEaDYCXQdo" alt="" />
             <h2>Precio: $300</h2>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
             pariatur laudantium dignissimos officia sequi minus in quibusdam
             reprehenderit necessitatibus doloribus.
-            <button>Agregar al carrito</button>
-            <button>Quitar del carrito</button>
+            <button id='addiPad'>Agregar al carrito</button>
+            <button id='removeiPad'>Quitar del carrito</button>
           </div>
           <div>
             <h2>IPHONE</h2>
-            <img src="/img/iphone.jpg" alt="" />
+            <img src="https://source.unsplash.com/yPFAAwomTYQ" alt="" />
             <h2>PRECIO: $250</h2>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
             fugit sunt, aperiam numquam explicabo facilis consequuntur quidem
             nemo quasi ullam?
-            <button>Agregar al carrito</button>
-            <button>Quitar del carrito</button>
+            <button id='addiPhone'>Agregar al carrito</button>
+            <button id='removeiPhone'>Quitar del carrito</button>
           </div>
           <div>
-            <h2>PC GAMER</h2>
-            <img src="/img/pc1.jpg" alt="" />
+            <h2>GAMER PC</h2>
+            <img src="https://source.unsplash.com/H-qqp_Eqaww" alt="" />
             <h2>Precio: $500</h2>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
             exercitationem architecto quaerat ipsa eveniet recusandae possimus
             odit ea autem fuga, a eos nihil officia, quam adipisci sit,
             consequatur provident aliquam.
-            <button>Agregar al carrito</button>
-            <button>Quitar del carrito</button>
+            <button id='addGamerPC'>Agregar al carrito</button>
+            <button id='removeGamerPC'>Quitar del carrito</button>
           </div>
         </article>
       </section>
     </main>
+    <script src="/scripts/ejem.js"></script>
   </body>
 </html>
