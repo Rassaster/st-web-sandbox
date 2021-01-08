@@ -1,0 +1,21 @@
+body {
+  font-family: $primary-font, $secondary-font;
+  background-color: $bg-color;
+}
+
+img {
+  display: block;
+}
+
+/*
+  limit screen max width to 1200px = 75rem
+  and center the container in the viewport
+*/
+@media (min-width: 75rem) {
+  header,
+  main,
+  footer {
+    max-width: 75em;
+    margin: 0 calc((100% - 75rem) / 2);
+  }
+}

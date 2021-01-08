@@ -1,0 +1,115 @@
+header {
+  border: 1px solid $primary-color;
+  background-color: rgba($secondary-color, 0.5);
+  height: 88px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 20px;
+
+  nav {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    input {
+      width: 220px;
+      height: 20px;
+    }
+  }
+}
+
+main {
+  background-color: rgba($secondary-color, 0.5);
+  width: 100%;
+  border-right: 1px solid $primary-color;
+  border-left: 1px solid $primary-color;
+
+  .inicio h1 {
+    color: $primary-color;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid $primary-color;
+  }
+
+  img {
+    width: 100px;
+  }
+
+  section {
+    display: flex;
+    justify-content: left;
+    padding: 10px 10px;
+
+    article {
+      border: 2px solid $primary-color;
+      margin-bottom: 10px;
+      width: 100%;
+      background-color: $secondary-color;
+      padding: 5px;
+
+      p {
+        color: white;
+        line-height: 20px;
+      }
+      a {
+        color: white;
+      }
+    }
+
+    #listOfProducts {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  .categorias ul {
+    border: 1px solid $primary-color;
+    list-style: none;
+  }
+
+  #procceedToPayment a {
+    background-color: gold;
+    color: green;
+  }
+
+  #emptyShoppingCart {
+    background-color: red;
+    color: black;
+  }
+}
+
+footer {
+  height: 600px;
+  background-color: rgb(182, 33, 63);
+  margin-top: 100px;
+
+  h2 {
+    font-style: normal;
+    font-size: medium;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+input[type="submit"] {
+  background: cornflowerblue;
+  width: 75%;
+  margin: 10px 80px 0px 0px;
+  padding: 5px;
+  position: relative;
+  left: 20px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 14px;
+  border: 1px solid black;
+  color: white;
+  transition: 0.9s;
+}
+
+.btn:hover {
+  color: red;
+  background-color: rgb(12, 89, 231);
+}
