@@ -1,176 +1,119 @@
 // ++ Product Class ++
 class Product {
-  constructor(name, price) {
+  constructor(name, imgURL, price) {
     this.name = name,
+    this.imgURL = imgURL,
     this.price = price
   }
 }
 // ++ Object product creation ++
-let product1 = new Product('iPad', 300);
-let product2 = new Product('iPhone', 250);
-let product3 = new Product('GamerPC', 500);
+let product1 = new Product('iPad', 'https://source.unsplash.com/McEaDYCXQdo', 300);
+let product2 = new Product('iPhone', 'https://source.unsplash.com/yPFAAwomTYQ', 250);
+let product3 = new Product('GamerPC', 'https://source.unsplash.com/H-qqp_Eqaww', 500);
+// ++ Array productsShowCase++
+let productsShowCase = [product1, product2, product3];
 // ++ shoppingCart Object ++
 let shoppingCart = {
   productsInCart: [],
   totalItemsCart: 0,
   totalCostCart: 0
 }
+// Captures of Nodes in the Shopping Cart section in HTML
 let listOfProductsView = document.getElementById('listOfProducts');
 let totalItemsView = document.getElementById('totalItems');
 let totalCostView = document.getElementById('totalCost');
-let totalItems = shoppingCart.productsInCart.length;
+let totalItems = shoppingCart.productsInCart.length; // Total productos en shoppingCartOBJ
 
-// **************************************
-// *** Procced Payment (LocalStorage) ***
-// **************************************
-let procceedPaymentBtn = document.getElementById('procceedToPayment');
-const shoppingCartToLocalStorage = () => {
-  localStorage.setItem('totalCost', shoppingCart.totalCostCart);
-  localStorage.setItem('totalProducts', shoppingCart.totalItemsCart);
+const loadProductsShowCase = () => {
+  for (let i = 0; i < productsShowCase.length; i++) {
+    let product = productsShowCase[i];
+    let productsUsersView = document.getElementById('productsShowcase');
+    let productElement = document.createElement('div');
+    productElement.innerHTML = 
+      `
+        <h2>${product.name}</h2>
+        <img src="${product.imgURL}" alt="" />
+        <h2>${product.price}</h2>
+        <button onclick="addProduct(${i})">Agregar al carrito</button>
+        <button onclick="removeProduct(${i})">Quitar del carrito</button>
+      `;
+      productsUsersView.appendChild(productElement);
+  }
+}
+const msgSuccessAdd = () => {
+  alert('El producto ha sido agregado al carrito de compras')
+}
+const msgSuccessRemove = () => {
+  alert('El producto ha sido removido al carrito de compras')
+}
+// addProduct function button
+let addProduct = (i) => {
+  // ++ Adds products to totalProducs and totalCost in LocalStorage ++
+  localStorage.setItem('totalProducts', (shoppingCart.totalItemsCart+1));
+  localStorage.setItem('totalCost', (shoppingCart.totalCostCart+productsShowCase[i].price));
+  // ++ Add item to shopping cart object ++
+  shoppingCart.productsInCart.push(productsShowCase[i]);
+  // ++ Add item to shopping cart object ++
+  let newListItem = document.createElement('li');
+  newListItem.textContent = `Producto: ${productsShowCase[i].name}... $${productsShowCase[i].price}`;
+  listOfProductsView.appendChild(newListItem);
+  // ++ Updates the total of items ++
+  totalItems = shoppingCart.productsInCart.length;
+  shoppingCart.totalItemsCart = totalItems;
+  totalItemsView.textContent = shoppingCart.totalItemsCart;
+  // ++ Adds price to the total cost ++
+  shoppingCart.totalCostCart += productsShowCase[i].price;
+  totalCostView.textContent = shoppingCart.totalCostCart;
+  // -- Message success --
+  msgSuccessAdd();
+  // ++ Updates listOfProducts in LocalStorate ++
   localStorage.setItem('listOfProducts', listOfProductsView.innerHTML);
 }
-procceedPaymentBtn.addEventListener('click', shoppingCartToLocalStorage);
-// **********************************************
-// *** Clear Shopping Cart and (LocalStorage) ***
-// **********************************************
-let emptyShoppingCartBtn = document.getElementById('emptyShoppingCart');
+// removeProduct function button
+let removeProduct = (i) => {
+  // -- Substracts products from totalProducs and totalCost in LocalStorage --
+  localStorage.setItem('totalProducts', (shoppingCart.totalItemsCart-1));
+  localStorage.setItem('totalCost', (shoppingCart.totalCostCart-productsShowCase[i].price));
+  // -- Removes item from shopping cart object --
+  let indexOfItem = shoppingCart.productsInCart.indexOf(productsShowCase[i]);
+  shoppingCart.productsInCart.splice(indexOfItem, 1);
+  // -- Removes item from User's view --
+  listOfProductsView.removeChild(listOfProductsView.childNodes[indexOfItem]);
+  // -- Updates the total of items --
+  totalItems = shoppingCart.productsInCart.length;
+  shoppingCart.totalItemsCart = totalItems;
+  totalItemsView.textContent = shoppingCart.totalItemsCart;
+  // -- Subtracts price to the total cost --
+  shoppingCart.totalCostCart -= productsShowCase[i].price;
+  totalCostView.textContent = shoppingCart.totalCostCart;
+  // -- Message success --
+  msgSuccessRemove();
+  // -- Updates listOfProducts in LocalStorate --
+  localStorage.setItem('listOfProducts', listOfProductsView.innerHTML);
+}
+// clrear shoppingCart object, display to User and LocalStorage
 const clearShoppingCart = () => {
-  localStorage.clear();
-  shoppingCart.productsInCart = [];
-  shoppingCart.totalItemsCart = 0;
-  shoppingCart.totalCostCart = 0;
-  totalItemsView.textContent = 0;
-  totalCostView.textContent = 0;
+  localStorage.clear(); // Deletes the entire LocalStorage
+  shoppingCart.productsInCart = []; // Sets to empty the shoppingCart product's list array
+  shoppingCart.totalItemsCart = 0; // Sets to zero the count of items in shoppingCart
+  shoppingCart.totalCostCart = 0; // Sets to zero the totalCost in shoppingCart
+  totalItemsView.textContent = 0; // Sets to zero the count of items in User's view
+  totalCostView.textContent = 0; // Sets to zero the totalCost in User's view
+  // Deletes the list of products displayed to the User.
   while (listOfProductsView.childElementCount !== 0) {
     listOfProductsView.removeChild(listOfProductsView.lastChild);
   };
 }
-emptyShoppingCartBtn.addEventListener('click', clearShoppingCart);
-// *************************
-// *** Add & Remove iPad ***
-// *************************
-let addiPad = () => {
-  // ++ Add item to shopping cart object ++
-  shoppingCart.productsInCart.push(product1);
-  // ++ Add item to shopping cart object ++
-  let newListItem = document.createElement('li');
-  newListItem.textContent = `Producto: ${product1.name}... $${product1.price}`;
-  newListItem.classList.add('iPad');
-  listOfProductsView.appendChild(newListItem);
-  // ++ Updates the total of items ++
-  totalItems = shoppingCart.productsInCart.length;
-  shoppingCart.totalItemsCart = totalItems;
-  totalItemsView.textContent = shoppingCart.totalItemsCart;
-  // ++ Adds price to the total cost ++
-  shoppingCart.totalCostCart += product1.price;
-  totalCostView.textContent = shoppingCart.totalCostCart;
-}
-let removeiPad = () => {
-  // -- Removes item from shopping cart object --
-  let indexOfItem = shoppingCart.productsInCart.indexOf(product1);
-  shoppingCart.productsInCart.splice(indexOfItem, 1);
-  // -- Removes item from User's view --
-  listOfProductsView.removeChild(listOfProductsView.childNodes[indexOfItem]);
-  // -- Updates the total of items --
-  totalItems = shoppingCart.productsInCart.length;
-  shoppingCart.totalItemsCart = totalItems;
-  totalItemsView.textContent = shoppingCart.totalItemsCart;
-  // -- Subtracts price to the total cost --
-  shoppingCart.totalCostCart -= product1.price;
-  totalCostView.textContent = shoppingCart.totalCostCart;
-}
-let addiPadButton = document.getElementById('addiPad');
-addiPadButton.addEventListener('click', addiPad);
-let removeiPadButton = document.getElementById('removeiPad');
-removeiPadButton.addEventListener('click', removeiPad);
-// ----------------------------
-// -- Add & Remove iPad ends --
-// ----------------------------
-// ***************************
-// *** Add & Remove iPhone ***
-// ***************************
-let addiPhone = () => {
-  // ++ Add item to shopping cart object ++
-  shoppingCart.productsInCart.push(product2);
-  // ++ Adds item to User's view ++
-  let newListItem = document.createElement('li');
-  newListItem.textContent = `Producto: ${product2.name}... $${product2.price}`;
-  newListItem.classList.add('iPhone');
-  listOfProductsView.appendChild(newListItem);
-  // ++ Updates the total of items ++
-  totalItems = shoppingCart.productsInCart.length;
-  shoppingCart.totalItemsCart = totalItems;
-  totalItemsView.textContent = shoppingCart.totalItemsCart;
-  // ++ Adds price to the total cost ++
-  shoppingCart.totalCostCart += product2.price;
-  totalCostView.textContent = shoppingCart.totalCostCart;
-}
-let removeiPhone = () => {
-  // -- Removes item from shopping cart object --
-  let indexOfItem = shoppingCart.productsInCart.indexOf(product2);
-  shoppingCart.productsInCart.splice(indexOfItem, 1);
-  // -- Removes item from User's view --
-  listOfProductsView.removeChild(listOfProductsView.childNodes[indexOfItem]);
-  // -- Updates the total of items --
-  totalItems = shoppingCart.productsInCart.length;
-  shoppingCart.totalItemsCart = totalItems;
-  totalItemsView.textContent = shoppingCart.totalItemsCart;
-  // -- Subtracts price to the total cost --
-  shoppingCart.totalCostCart -= product2.price;
-  totalCostView.textContent = shoppingCart.totalCostCart;
-}
-let addiPhoneButton = document.getElementById('addiPhone');
-addiPhoneButton.addEventListener('click', addiPhone);
-let removeiPhoneButton = document.getElementById('removeiPhone');
-removeiPhoneButton.addEventListener('click', removeiPhone);
-// ------------------------------
-// -- Add & Remove iPhone ends --
-// ------------------------------
-// ****************************
-// *** Add & Remove GamerPC ***
-// ****************************
-let addGamerPC = () => {
-  // ++ Add item to shopping cart object ++
-  shoppingCart.productsInCart.push(product3);
-  // ++ Adds item to User's view ++
-  let newListItem = document.createElement('li');
-  newListItem.textContent = `Producto: ${product3.name}... $${product3.price}`;
-  newListItem.classList.add('gamerPC');
-  listOfProductsView.appendChild(newListItem);
-  // ++ Updates the total of items ++
-  totalItems = shoppingCart.productsInCart.length;
-  shoppingCart.totalItemsCart = totalItems;
-  totalItemsView.textContent = shoppingCart.totalItemsCart;
-  // ++ Adds price to the total cost ++
-  shoppingCart.totalCostCart += product3.price;
-  totalCostView.textContent = shoppingCart.totalCostCart;
-}
-let removeGamerPC = () => {
-  // -- Removes item from shopping cart object --
-  let indexOfItem = shoppingCart.productsInCart.indexOf(product3);
-  shoppingCart.productsInCart.splice(indexOfItem, 1);
-  // -- Removes item from User's view --
-  listOfProductsView.removeChild(listOfProductsView.childNodes[indexOfItem]);
-  // -- Updates the total of items --
-  totalItems = shoppingCart.productsInCart.length;
-  shoppingCart.totalItemsCart = totalItems;
-  totalItemsView.textContent = shoppingCart.totalItemsCart;
-  // -- Subtracts price to the total cost --
-  shoppingCart.totalCostCart -= product3.price;
-  totalCostView.textContent = shoppingCart.totalCostCart;
-}
-let addGamerPCButton = document.getElementById('addGamerPC');
-addGamerPCButton.addEventListener('click', addGamerPC);
-let removeGamerPCButton = document.getElementById('removeGamerPC');
-removeGamerPCButton.addEventListener('click', removeGamerPC);
-// -------------------------------
-// -- Add & Remove GamerPC ends --
-// -------------------------------
-window.onload = () => {
+// Function that retrieves the LocalStorage to be displayed to user in HTML shoppingCart.
+const displayLocalStorageToUser = () => {
   let previousListItemsView = localStorage.getItem('listOfProducts');
   listOfProductsView.innerHTML = previousListItemsView;
   let previousTotalItemsView = localStorage.getItem('totalProducts');
   totalItemsView.textContent = previousTotalItemsView;
   let previousTotalCostView = localStorage.getItem('totalCost');
   totalCostView.textContent = previousTotalCostView;
-};
+}
+window.onload = () => {
+  loadProductsShowCase();
+  displayLocalStorageToUser();
+}
