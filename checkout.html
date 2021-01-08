@@ -3,78 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>contacto</title>
   </head>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0px;
-      padding: 0px;
-      font-family: "Lato", sans-serif;
-    }
-
-    img {
-      width: 100px;
-    }
-
-    .inicio h1 {
-      color: white;
-      padding: 20px;
-      margin-top: 5px;
-      text-align: center;
-      border-bottom: 2px solid rgb(73, 67, 67);
-    }
-
-    header {
-      background: white;
-      height: 120px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      position: fixed;
-      z-index: 1;
-    }
-
-    main {
-      background-color: cornflowerblue;
-      height: 100%;
-      width: 100%;
-      position: relative;
-      top: 100px;
-    }
-  </style>
   <body>
     <header>
-      <div><img src="/img/logo.jpg" alt="mvp_logo" /></div>
-
+      <img id="logo" src="https://picsum.photos/id/1025/80/80" alt="" />
       <nav>
         <input type="text" placeholder="Search" />
       </nav>
     </header>
 
-    <h1>-</h1>
-    <main>
-      <div class="creditCardForm">
-        <div class="heading">
-          <h1>Confirmar compra</h1>
+    <main style="padding: 20px">
+      <div>
+        <div>
+          <h1>Contacto</h1>
         </div>
-        <div class="payment">
+        <div>
+          <form style="padding: 20px">
+            <div>
+              <label for="owner">Nombre de contacto</label>
+              <input type="text" id="owner" />
+            </div>
+            <div>
+              <label for="cvv">Domicilio</label>
+              <input type="text" id="DOMICILIO" />
+            </div>
+            <div id="cellphone">
+              <label for="cardNumber">Codigo Postal</label>
+              <input type="text" id="cp_code" />
+            </div>
+            <div id="expiration-date">
+              <label for="cardNumber">Celular</label>
+              <input type="text" id="number" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h1>Metodo de Pago</h1>
+        </div>
+        <div>
           <form>
-            <div class="form-group owner">
+            <div>
               <label for="owner">Owner</label>
-              <input type="text" class="form-control" id="owner" />
+              <input type="text" id="owner" />
             </div>
-            <div class="form-group CVV">
+            <div>
               <label for="cvv">CVV</label>
-              <input type="text" class="form-control" id="cvv" />
+              <input type="text" id="cvv" />
             </div>
-            <div class="form-group" id="card-number-field">
+            <div id="card-number-field">
               <label for="cardNumber">Numero de tarjeta</label>
-              <input type="text" class="form-control" id="cardNumber" />
+              <input type="text" id="cardNumber" />
             </div>
-            <div class="form-group" id="expiration-date">
+            <div id="expiration-date">
               <label>Fecha de expiracion</label>
               <select>
                 <option value="01">January</option>
@@ -100,18 +85,15 @@
               </select>
             </div>
 
-            <div class="form-group" id="pay-now">
+            <div id="pay-now">
               <button
                 type="submit"
-                class="btn btn-default"
+                class="btn"
                 id="confirm-purchase"
               >
                 Confirmar
               </button>
             </div>
-          </form>
-        </div>
-      </div>
     </main>
   </body>
 </html>

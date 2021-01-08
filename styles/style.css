@@ -1,0 +1,172 @@
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap");
+/* fontawesome v5*/
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/fontawesome.css");
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/regular.css");
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/brands.css");
+/* basic rules */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* theme colors */
+/* theme fonts */
+body {
+  font-family: "Roboto Mono", monospace, "Roboto", sans-serif;
+  background-color: white;
+}
+
+img {
+  display: block;
+}
+
+/*
+  limit screen max width to 1200px = 75rem
+  and center the container in the viewport
+*/
+@media (min-width: 75rem) {
+  header,
+  main,
+  footer {
+    max-width: 75em;
+    margin: 0 calc((100% - 75rem) / 2);
+  }
+}
+
+header {
+  border: 1px solid black;
+  background-color: rgba(128, 128, 128, 0.5);
+  height: 88px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 4px 20px;
+}
+
+header nav {
+  width: 100%;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+header nav input {
+  width: 220px;
+  height: 20px;
+}
+
+main {
+  background-color: rgba(128, 128, 128, 0.5);
+  width: 100%;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+main .inicio h1 {
+  color: black;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+main img {
+  width: 100px;
+}
+
+main section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  padding: 10px 10px;
+}
+
+main section article {
+  border: 2px solid black;
+  margin-bottom: 10px;
+  width: 100%;
+  background-color: grey;
+  padding: 5px;
+}
+
+main section article p {
+  color: white;
+  line-height: 20px;
+}
+
+main section article a {
+  color: white;
+}
+
+main section #listOfProducts {
+  border: 1px solid black;
+}
+
+main .categorias ul {
+  border: 1px solid black;
+  list-style: none;
+}
+
+main #procceedToPayment a {
+  background-color: gold;
+  color: green;
+}
+
+main #emptyShoppingCart {
+  background-color: red;
+  color: black;
+}
+
+footer {
+  height: 600px;
+  background-color: #b6213f;
+  margin-top: 100px;
+}
+
+footer h2 {
+  font-style: normal;
+  font-size: medium;
+  text-align: center;
+  padding: 10px;
+}
+
+input[type="submit"] {
+  background: cornflowerblue;
+  width: 75%;
+  margin: 10px 80px 0px 0px;
+  padding: 5px;
+  position: relative;
+  left: 20px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 14px;
+  border: 1px solid black;
+  color: white;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+}
+
+.btn:hover {
+  color: red;
+  background-color: #0c59e7;
+}
+/*# sourceMappingURL=style.css.map */
