@@ -10,8 +10,11 @@ class Product {
 let product1 = new Product('iPad', 'https://source.unsplash.com/McEaDYCXQdo', 300);
 let product2 = new Product('iPhone', 'https://source.unsplash.com/yPFAAwomTYQ', 250);
 let product3 = new Product('GamerPC', 'https://source.unsplash.com/H-qqp_Eqaww', 500);
+let product4 = new Product('Ash', 'https://source.unsplash.com/H-qqp_Eqaww', 20);
+let product5 = new Product('Bits', 'https://source.unsplash.com/H-qqp_Eqaww', 10);
+
 // ++ Array productsShowCase++
-let productsShowCase = [product1, product2, product3];
+let productsShowCase = [product1, product2, product3, product4, product5];
 // ++ shoppingCart Object ++
 let shoppingCart = {
   productsInCart: [],
@@ -113,7 +116,46 @@ const displayLocalStorageToUser = () => {
   let previousTotalCostView = localStorage.getItem('totalCost');
   totalCostView.textContent = previousTotalCostView;
 }
-window.onload = () => {
+// Products order display function
+let selectOrderOfProducts = document.getElementById('productsDisplayOrder');
+const changeOrder = () => {
+  const sortByName = (productA, productB) => {
+    let nameA = productA.name.toUpperCase()
+    let nameB = productB.name.toUpperCase()
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    if (nameA === nameB) {
+      return 0
+    }
+  }
+  const sortByPrice = (productPriceA, productPriceB) => {
+    return productPriceA.price - productPriceB.price
+  }
+  if (selectOrderOfProducts.value === 'a-z') {
+    selectOrderOfProducts.style.color = 'red'
+    productsShowCase.sort();
+  }
+  if (selectOrderOfProducts.value === 'z-a') {
+    selectOrderOfProducts.style.color = 'blue'
+    productsShowCase.reverse(productsShowCase.sort(sortByName))
+  }
+  if (selectOrderOfProducts.value === 'cheap-expensive') {
+    selectOrderOfProducts.style.color = 'green'
+    productsShowCase.sort(sortByPrice);
+  }
+  if (selectOrderOfProducts.value === 'expensive-cheap') {
+    selectOrderOfProducts.style.color = 'orange'
+    productsShowCase.reverse(productsShowCase.sort(sortByPrice));
+  }
   loadProductsShowCase();
+}
+
+// On load instructions
+window.onload = () => {
+  // loadProductsShowCase();
   displayLocalStorageToUser();
 }

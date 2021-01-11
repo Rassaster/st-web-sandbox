@@ -19,6 +19,19 @@
       <div class="inicio"><h1>SHOP</h1></div>
       <section>
         <article id="productsShowcase">
+          <select name="productsDisplayOrder" id="productsDisplayOrder" onchange="changeOrder()">
+            <!-- relevancia -->
+            <option disabled selected>Selecciona una opción para ordenar los productos</option>
+            <!-- a-z -->
+            <option value="a-z">Ordenar por nombre ascendente (A-Z)</option>
+            <!-- z-a -->
+            <option value="z-a">Ordenar por nombre descendente (Z-A)</option>
+            <!-- $ mayor a menor -->
+            <option value="cheap-expensive">Ordenar por precio ascendente (menor a mayor)</option>
+            <!-- $ menor a mayor > -->
+            <option value="expensive-cheap">Ordenar por precio descendente (mayor a menor)</option>
+
+          </select>
           
         </article>
       </section>
