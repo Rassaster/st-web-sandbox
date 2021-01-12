@@ -32,6 +32,7 @@ const loadProductsShowCase = () => {
     let product = productsShowCase[i];
     let productsUsersView = document.getElementById('productsShowcase');
     let productElement = document.createElement('div');
+    productElement.classList.add('divContainer');
     productElement.innerHTML = 
       `
         <h2>${product.name}</h2>
@@ -136,26 +137,33 @@ const changeOrder = () => {
     return productPriceA.price - productPriceB.price
   }
   if (selectOrderOfProducts.value === 'a-z') {
-    selectOrderOfProducts.style.color = 'red'
-    productsShowCase.sort();
+    selectOrderOfProducts.style.color = 'red';
+    productsShowCase.sort(sortByName);
   }
   if (selectOrderOfProducts.value === 'z-a') {
-    selectOrderOfProducts.style.color = 'blue'
-    productsShowCase.reverse(productsShowCase.sort(sortByName))
+    selectOrderOfProducts.style.color = 'blue';
+    productsShowCase.reverse(productsShowCase.sort(sortByName));
   }
   if (selectOrderOfProducts.value === 'cheap-expensive') {
-    selectOrderOfProducts.style.color = 'green'
+    selectOrderOfProducts.style.color = 'green';
     productsShowCase.sort(sortByPrice);
   }
   if (selectOrderOfProducts.value === 'expensive-cheap') {
-    selectOrderOfProducts.style.color = 'orange'
+    selectOrderOfProducts.style.color = 'orange';
     productsShowCase.reverse(productsShowCase.sort(sortByPrice));
   }
+  const clearProductsShowCase = () => {
+    let productsUsersView = document.getElementById('productsShowcase')
+    while (productsUsersView.hasChildNodes()) {
+    productsUsersView.removeChild(productsUsersView.firstChild);
+    }
+  }
+  clearProductsShowCase();
   loadProductsShowCase();
 }
 
 // On load instructions
 window.onload = () => {
-  // loadProductsShowCase();
+  loadProductsShowCase();
   displayLocalStorageToUser();
 }
