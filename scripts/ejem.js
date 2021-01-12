@@ -32,7 +32,6 @@ const loadProductsShowCase = () => {
     let product = productsShowCase[i];
     let productsUsersView = document.getElementById('productsShowcase');
     let productElement = document.createElement('div');
-    productElement.classList.add('divContainer');
     productElement.innerHTML = 
       `
         <h2>${product.name}</h2>
@@ -160,6 +159,38 @@ const changeOrder = () => {
   }
   clearProductsShowCase();
   loadProductsShowCase();
+}
+// Function tu display hour after buyout
+const confirmMsgDate = () => {
+  let currentDate = new Date();
+  let month = () => {
+    switch (currentDate.getMonth()) {
+      case 0: return 'Enero'; break;
+      case 1: return 'Febrero'; break;
+      case 2: return 'Marzo'; break;
+      case 3: return 'Abril'; break;
+      case 4: return 'Mayo'; break;
+      case 5: return 'Junio'; break;
+      case 6: return 'Julio'; break;
+      case 7: return 'Agosto'; break;
+      case 8: return 'Septiembre'; break;
+      case 9: return 'Octubre'; break;
+      case 10: return 'Noviembre'; break;
+      case 11: return 'Diciembre'; break;
+    }
+  }
+  let day = currentDate.getDate();
+  let year = currentDate.getFullYear();
+  let hour = currentDate.getHours();
+  let minutes = currentDate.getMinutes();
+  let seconds = currentDate.getSeconds();
+  let buyoutDate = [month(), day, year].join('-');
+  let buyoutTime = [hour, minutes, seconds].join(':');
+  let buyoutFullDate = 'D|' + buyoutDate + '|T|' + buyoutTime;
+  alert(`
+  Su compra se registró con éxito con fecha de: 
+  ${buyoutDate} a las ${buyoutTime}`);
+  return buyoutFullDate;
 }
 // On load instructions
 window.onload = () => {
