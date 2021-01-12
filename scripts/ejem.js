@@ -10,16 +10,11 @@ class Product {
 let product1 = new Product('iPad', 'https://source.unsplash.com/McEaDYCXQdo', 300);
 let product2 = new Product('iPhone', 'https://source.unsplash.com/yPFAAwomTYQ', 250);
 let product3 = new Product('GamerPC', 'https://source.unsplash.com/H-qqp_Eqaww', 500);
-<<<<<<< HEAD
 let product4 = new Product('Ash', 'https://source.unsplash.com/H-qqp_Eqaww', 20);
 let product5 = new Product('Bits', 'https://source.unsplash.com/H-qqp_Eqaww', 10);
 
 // ++ Array productsShowCase++
 let productsShowCase = [product1, product2, product3, product4, product5];
-=======
-// ++ Array productsShowCase++
-let productsShowCase = [product1, product2, product3];
->>>>>>> d02358b475fdfc850a413386c97dbd777c2f0350
 // ++ shoppingCart Object ++
 let shoppingCart = {
   productsInCart: [],
@@ -37,10 +32,7 @@ const loadProductsShowCase = () => {
     let product = productsShowCase[i];
     let productsUsersView = document.getElementById('productsShowcase');
     let productElement = document.createElement('div');
-<<<<<<< HEAD
     productElement.classList.add('divContainer');
-=======
->>>>>>> d02358b475fdfc850a413386c97dbd777c2f0350
     productElement.innerHTML = 
       `
         <h2>${product.name}</h2>
@@ -51,17 +43,10 @@ const loadProductsShowCase = () => {
       `;
       productsUsersView.appendChild(productElement);
   }
-<<<<<<< HEAD
 }
 const msgSuccessAdd = () => {
   alert('El producto ha sido agregado al carrito de compras')
 }
-=======
-}
-const msgSuccessAdd = () => {
-  alert('El producto ha sido agregado al carrito de compras')
-}
->>>>>>> d02358b475fdfc850a413386c97dbd777c2f0350
 const msgSuccessRemove = () => {
   alert('El producto ha sido removido al carrito de compras')
 }
@@ -132,7 +117,6 @@ const displayLocalStorageToUser = () => {
   let previousTotalCostView = localStorage.getItem('totalCost');
   totalCostView.textContent = previousTotalCostView;
 }
-<<<<<<< HEAD
 // Products order display function
 let selectOrderOfProducts = document.getElementById('productsDisplayOrder');
 const changeOrder = () => {
@@ -177,15 +161,8 @@ const changeOrder = () => {
   clearProductsShowCase();
   loadProductsShowCase();
 }
-
 // On load instructions
 window.onload = () => {
   loadProductsShowCase();
   displayLocalStorageToUser();
 }
-=======
-window.onload = () => {
-  loadProductsShowCase();
-  displayLocalStorageToUser();
-}
->>>>>>> d02358b475fdfc850a413386c97dbd777c2f0350
